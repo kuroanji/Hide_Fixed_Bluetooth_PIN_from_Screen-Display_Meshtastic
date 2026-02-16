@@ -1,4 +1,4 @@
-# Hide Fixed Bluetooth PIN from Screen Display
+# Hide Fixed Bluetooth PIN from Screen Display [Meshtastic devices + InkHUD]
 
 Adds option to hide the fixed Bluetooth PIN from the device screen during pairing, while still displaying "Pairing with predefined PIN" message.
 
