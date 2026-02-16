@@ -6,3 +6,5 @@ Adds option to hide the fixed Bluetooth PIN from the device screen during pairin
 
 When using a fixed PIN for Bluetooth pairing, displaying it on screen creates a security risk — anyone nearby can see the PIN. This is particularly relevant for devices in semi-public locations or shared spaces.
 
+See PIN_SECURITY_IMPLEMENTATION.md for instructions (or PIN_SECURITY_INKHUD_IMPLEMENTATION.md for InkHUD only).
+
