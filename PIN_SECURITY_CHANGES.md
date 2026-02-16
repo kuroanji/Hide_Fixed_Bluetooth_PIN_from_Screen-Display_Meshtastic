@@ -110,3 +110,63 @@ LOG_INFO("BLE pair process started with passkey %s %s", passkey1, passkey2);
 |------|----------------|------------|
 | NimbleBluetooth.cpp | Modified (conditional) | Unchanged |
 | NRF52Bluetooth.cpp | Modified (conditional) | Unchanged |
+
+---
+
+## Required: Protobuf Submodule Changes
+
+**IMPORTANT:** The firmware changes above reference `config.bluetooth.device_show_fixed_pin` which does NOT exist in the current protobuf definition. The following changes must be made to the `protobufs` submodule:
+
+### `protobufs/meshtastic/config.proto`
+
+Add `device_show_fixed_pin` field to `BluetoothConfig` message:
+
+```diff
+ message BluetoothConfig {
+   // ...
+   PairingMode mode = 2;
+   uint32 fixed_pin = 3;
++  /*
++   * Show the fixed PIN on the device screen during pairing.
++   * When false (and mode is FIXED_PIN), screen shows "Pairing with predefined PIN"
++   * instead of revealing the actual PIN code.
++   * Default: true (PIN is shown)
++   */
++  bool device_show_fixed_pin = 4;
+ }
+```
+
+### After modifying config.proto:
+
+1. Run the protobuf generator to create updated `.pb.h` files:
+   ```bash
+   cd protobufs
+   ./generate.sh
+   ```
+
+2. Copy generated files to firmware:
+   ```bash
+   cp -r generated/* ../firmware/src/mesh/generated/
+   ```
+
+---
+
+## Required: Mobile App Changes
+
+The Meshtastic mobile apps (iOS/Android) need to implement a toggle switch in the Bluetooth settings UI:
+
+### App UI Requirements
+
+- **Location:** Bluetooth Config screen
+- **Control:** Toggle switch
+- **Label:** "Show PIN on Screen" or "Display PIN during pairing"
+- **Description:** "When disabled, the fixed PIN will not be shown on the device screen during Bluetooth pairing"
+- **Visibility:** Only shown when pairing mode is `FIXED_PIN`
+- **Default:** ON (true) — matches current behavior
+
+### App Proto Integration
+
+The apps need to:
+1. Update to use the modified `config.proto`
+2. Read/write `config.bluetooth.device_show_fixed_pin` field
+3. Add UI toggle in Bluetooth settings

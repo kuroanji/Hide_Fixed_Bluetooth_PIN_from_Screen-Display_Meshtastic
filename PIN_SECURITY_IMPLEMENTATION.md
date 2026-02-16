@@ -58,8 +58,14 @@ When `hidePin` is false (or random PIN):
 
 ## Files Modified
 
+### Firmware
 - `src/nimble/NimbleBluetooth.cpp` — ESP32/NimBLE pairing screen
 - `src/platform/nrf52/NRF52Bluetooth.cpp` — nRF52 pairing screen
+
+### Protobuf Submodule (required)
+- `protobufs/meshtastic/config.proto` — add `device_show_fixed_pin` field to `BluetoothConfig`
+
+See `PIN_SECURITY_CHANGES.md` for the exact protobuf changes required.
 
 ## Testing
 
