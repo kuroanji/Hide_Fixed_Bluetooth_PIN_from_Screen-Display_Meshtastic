@@ -8,3 +8,5 @@ When using a fixed PIN for Bluetooth pairing, displaying it on screen creates a 
 
 See PIN_SECURITY_IMPLEMENTATION.md for instructions (or PIN_SECURITY_INKHUD_IMPLEMENTATION.md for InkHUD only).
 
+Merge branch for InkHUD devices ONLY: https://github.com/kuroanji/firmware/tree/Hide_fixed_PIN_InkHUD_devices
+
