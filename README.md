@@ -1,2 +1,8 @@
-# Hide_Fixed_Bluetooth_PIN_from_Screen-Display_Meshtastic
-Hide Fixed Bluetooth PIN from Screen Display [Meshtastic Devices + InkHUD]
+# Hide Fixed Bluetooth PIN from Screen Display
+
+Adds option to hide the fixed Bluetooth PIN from the device screen during pairing, while still displaying "Pairing with predefined PIN" message.
+
+## Why
+
+When using a fixed PIN for Bluetooth pairing, displaying it on screen creates a security risk — anyone nearby can see the PIN. This is particularly relevant for devices in semi-public locations or shared spaces.
+
